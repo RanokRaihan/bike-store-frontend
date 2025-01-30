@@ -1,5 +1,7 @@
+import { MoveRightIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 import ProductCard from "../ui/ProductCard";
-
+import { Button } from "../ui/button";
 const NewProduct = () => {
   return (
     <div className="w-full bg-gray-50">
@@ -19,6 +21,13 @@ const NewProduct = () => {
           <ProductCard />
           <ProductCard />
           <ProductCard />
+        </div>
+        <div className="py-8 flex justify-center">
+          <Button variant="outlinePrimary" size="lg" asChild>
+            <Link to="/products">
+              view all products <MoveRightIcon />
+            </Link>
+          </Button>
         </div>
       </div>
     </div>

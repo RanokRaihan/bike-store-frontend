@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 const Navbar = () => {
   return (
-    <header className="p-4">
+    <header className="p-4 border-b border-[#e5e5e5]">
       <div className="container mx-auto">
         <nav className="flex justify-between items-center">
           <Link to="/">
@@ -19,6 +19,14 @@ const Navbar = () => {
             <li>
               <Link to="/about" className="hover:underline underline-offset-4">
                 about
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/products"
+                className="hover:underline underline-offset-4"
+              >
+                Products
               </Link>
             </li>
           </ul>

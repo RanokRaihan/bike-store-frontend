@@ -26,11 +26,11 @@ const ProductCard = () => {
         </div>
       </div>
       <div className="flex flex-wrap justify-between gap-2">
-        <Button className="grow" variant="outline">
-          Add to cart
+        <Button className="grow" asChild variant="outline">
+          <Link to="/products/1">view details</Link>
         </Button>
-        <Button className="grow" asChild variant="default">
-          <Link to="/product/1">view details</Link>
+        <Button className="grow" variant="default">
+          Buy now
         </Button>
       </div>
     </div>
