@@ -1,12 +1,25 @@
-import bannerBike from "../../assets/images/banner-bike.png";
+import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
+
 const Banner = () => {
   return (
-    <div className="min-h-screen w-full flex justify-center items-center bg-[#BDB099]">
-      <div>
-        <h1>Ride a bike, save the world</h1>
-      </div>
-      <div>
-        <img src={bannerBike} alt="biker" />
+    <div className="h-content w-full flex justify-center items-start bg-green-100 bg-[url(/src/assets/images/banner-bike-v2.jpg)] bg-cover bg-bottom">
+      <div className="text-center p-8 mt-4 lg:mt-10 space-y-6">
+        <h1
+          className="text-6xl lg:text-8xl font-bold text-slate-800 "
+          style={{ fontFamily: "Bebas Neue" }}
+        >
+          Welcome to <span className="ml-4 mr-2">MOTO</span>
+          <span className="text-green-500">VIBE</span>
+        </h1>
+        <h2 className="text-md md:text-2xl font-semibold text-green-600 mt-2">
+          Embark on a journey of freedom and exhilaration, and let your dreams
+          take flight on two wheels
+        </h2>
+
+        <Button size="lg" className="mt-4 text-white p-6" asChild>
+          <Link to="/book-test-frive">Schedule a test drive</Link>
+        </Button>
       </div>
     </div>
   );

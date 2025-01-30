@@ -82,6 +82,12 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-['poppins'];
+  }
+  .nav-height {
+    @apply h-20;
+  }
+  .h-content {
+    @apply h-[calc(100vh-5rem)];
   }
 }
