@@ -13,17 +13,20 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
 import { FormFieldType } from "@/types/global.types";
-import { Checkbox } from "@radix-ui/react-checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectTrigger,
-  SelectValue,
-} from "@radix-ui/react-select";
+
 import { Calendar } from "lucide-react";
 import "react-datepicker/dist/react-datepicker.css";
 import { Path } from "react-hook-form";
+import { Checkbox } from "./checkbox";
 import { Input } from "./input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./select";
 import { Textarea } from "./textarea";
 
 interface CustomProps<T extends FieldValues> {
@@ -58,6 +61,7 @@ const RenderField = <T extends FieldValues>({
     showTimeSelect,
     dateFormat,
     renderSkeleton,
+    name,
   } = props;
   switch (fieldType) {
     case FormFieldType.INPUT:
@@ -80,9 +84,10 @@ const RenderField = <T extends FieldValues>({
       return (
         <FormControl>
           <Textarea
+            rows={8}
             placeholder={placeholder}
             {...field}
-            className="shad-textArea"
+            className=""
             disabled={props.disabled}
           />
         </FormControl>
@@ -121,14 +126,15 @@ const RenderField = <T extends FieldValues>({
     case FormFieldType.SELECT:
       return (
         <FormControl>
-          <Select onValueChange={field.onChange} defaultValue={field.value}>
-            <FormControl>
-              <SelectTrigger className="shad-select-trigger">
-                <SelectValue placeholder={placeholder} />
-              </SelectTrigger>
-            </FormControl>
-            <SelectContent className="shad-select-content">
-              {props.children}
+          <Select onValueChange={field.onChange} value={field.value}>
+            <SelectTrigger>
+              <SelectValue placeholder={placeholder} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>{name}</SelectLabel>
+                {props.children}
+              </SelectGroup>
             </SelectContent>
           </Select>
         </FormControl>

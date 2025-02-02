@@ -1,33 +1,49 @@
+import { IProduct } from "@/types/product.types";
 import { Link } from "react-router-dom";
-import bike from "../../assets/images/bike.png";
 import { Button } from "./button";
-const ProductCard = () => {
+
+type ProductProps = {
+  product: IProduct;
+};
+const ProductCard = ({ product }: ProductProps) => {
+  const { _id, brand, model, price, salePrice, discount, image } =
+    product || {};
   return (
     <div className="shadow-lg p-6 rounded-lg flex flex-col gap-4 bg-white relative">
-      <div className="size-12 bg-yellow-100 rounded-full absolute top-2 right-2 flex flex-col items-center justify-center p-2 z-10">
-        <span className="text-xs">20%</span>
-        <span className="text-xs">OFF</span>
+      {
+        // Discount badge
+        discount > 0 && (
+          <div className="size-12 bg-yellow-100 rounded-full absolute top-2 right-2 flex flex-col items-center justify-center p-2 z-10">
+            <span className="text-xs">{`${discount}%`}</span>
+            <span className="text-xs">OFF</span>
+          </div>
+        )
+      }
+
+      <div className="flex justify-center items-center bg-white h-48 w-full rounded-lg overflow-hidden">
+        <img src={image} alt={`${brand} ${model}`} />
       </div>
-      <div>
-        <img src={bike} alt="bike" />
-      </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-3">
         <div>
           <h2 className="flex flex-col ">
-            <span className="text-gray-500 text-xs">Yamaha</span>
-            <span className="text-lg font-semibold">FZ-S V3</span>
+            <span className="text-gray-500 text-xs line-clamp-1">{brand}</span>
+            <span className="text-lg line-clamp-2">{model}</span>
           </h2>
         </div>
         <div>
           <div className="flex flex-col items-end">
-            <span className="text-gray-500 text-sm line-through">200,000</span>
-            <span className="font-bold text-lg">150,000</span>
+            {discount > 0 && (
+              <span className="text-xs text-red-500 line-through">
+                ৳{price}
+              </span>
+            )}
+            <span className="font-bold text-lg text-primary">৳{salePrice}</span>
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap justify-between gap-2">
+      <div className="flex flex-wrap justify-between gap-2 mt-auto">
         <Button className="grow" asChild variant="outline">
-          <Link to="/products/1">view details</Link>
+          <Link to={`/products/${_id}`}>view details</Link>
         </Button>
         <Button className="grow" variant="default">
           Buy now

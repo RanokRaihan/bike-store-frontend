@@ -9,4 +9,15 @@ export enum FormFieldType {
   SKELETON = "skeleton",
 }
 
+export type TFilter = {
+  key: string;
+  value: string;
+};
+
+export type TMeta = {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+};
 // Example usage of FormFieldType.INPUT

@@ -1,3 +1,4 @@
+import AdminLayout from "@/pages/admin/Layout/AdminLayout";
 import About from "@/pages/public/About";
 import Home from "@/pages/public/Home";
 import Login from "@/pages/public/Login";
@@ -6,6 +7,7 @@ import Products from "@/pages/public/Products";
 import Register from "@/pages/public/Register";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
+import { adminRoutes } from "./admin.routes";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,11 @@ const router = createBrowserRouter([
         element: <Register />,
       },
     ],
+  },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: adminRoutes,
   },
 ]);
 

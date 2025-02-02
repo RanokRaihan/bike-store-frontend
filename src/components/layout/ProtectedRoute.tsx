@@ -1,14 +1,14 @@
+import { verifyToken } from "@/lib/utils";
 import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks";
-import { verifyToken } from "../../utils/verifyToken";
 
 const ProtectedRoute = ({
   children,
   role,
 }: {
   children: ReactNode;
-  role?: "admin" | "faculty" | "student";
+  role?: "admin" | "customer";
 }) => {
   const { token } = useAppSelector((state) => state.auth);
   const user = token ? verifyToken(token) : null;

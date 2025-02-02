@@ -91,3 +91,12 @@
     @apply h-[calc(100vh-5rem)];
   }
 }
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
