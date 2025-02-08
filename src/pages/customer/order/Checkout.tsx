@@ -1,5 +1,5 @@
 import CheckoutSummary from "@/components/checkout/CheckoutSummary";
-import { CheckoutForm } from "@/components/forms/checkoutForm";
+import { CheckoutForm } from "@/components/forms/CheckoutForm";
 import { useGetProductbyIdQuery } from "@/redux/features/product/product.api";
 import { IProduct } from "@/types/product.types";
 import { Loader } from "lucide-react";
