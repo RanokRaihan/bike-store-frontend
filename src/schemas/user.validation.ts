@@ -19,3 +19,23 @@ export const userRegistrationSchema = z
     message: "Passwords don't match",
     path: ["confirmPassword"],
   });
+
+export const changePasswordSchema = z
+  .object({
+    email: z
+      .string({ required_error: "Email is required" })
+      .email({ message: "Invalid email address" }),
+    oldPassword: z
+      .string({ required_error: "Old Password is required" })
+      .min(6, { message: "Old Password must be at least 6 characters long" }),
+    newPassword: z
+      .string({ required_error: "New Password is required" })
+      .min(6, { message: "New Password must be at least 6 characters long" }),
+    confirmNewPassword: z.string({
+      required_error: "Confirm New Password is required",
+    }),
+  })
+  .refine((data) => data.newPassword === data.confirmNewPassword, {
+    message: "New passwords don't match",
+    path: ["confirmNewPassword"],
+  });

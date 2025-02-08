@@ -31,6 +31,7 @@ import { Textarea } from "./textarea";
 
 interface CustomProps<T extends FieldValues> {
   control: Control<T>;
+
   fieldType: FormFieldType;
   type?: string;
   name: Path<T>;
@@ -62,6 +63,7 @@ const RenderField = <T extends FieldValues>({
     dateFormat,
     renderSkeleton,
     name,
+    disabled,
   } = props;
   switch (fieldType) {
     case FormFieldType.INPUT:
@@ -74,6 +76,7 @@ const RenderField = <T extends FieldValues>({
             <Input
               type={type}
               placeholder={placeholder}
+              disabled={disabled}
               {...field}
               className="shad-input border-0"
             />

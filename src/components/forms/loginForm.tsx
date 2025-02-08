@@ -3,6 +3,7 @@ import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { setUser } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import loginSchema from "@/schemas/login.validation";
+import { TError } from "@/types/error.types";
 import { FormFieldType } from "@/types/global.types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -41,8 +42,9 @@ export function LoginForm() {
       toast.success("Login success!");
       navigate(`/`);
     } catch (err) {
+      const error = err as TError;
       console.log({ err });
-      toast.error("Login failed! ");
+      toast.error(error?.data?.message || "Login failed! ");
     }
   };
 

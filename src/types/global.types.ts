@@ -18,6 +18,6 @@ export type TMeta = {
   total: number;
   page: number;
   limit: number;
-  totalPages: number;
+  totalPage: number;
 };
 // Example usage of FormFieldType.INPUT

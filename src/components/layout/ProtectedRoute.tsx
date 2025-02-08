@@ -17,8 +17,8 @@ const ProtectedRoute = ({
     return <Navigate to="/login" replace={true} />;
   } else if (role !== undefined && user?.role !== role) {
     return (
-      <div>
-        <h1>Access Denied</h1>
+      <div className="container mx-auto p-4 min-h-content">
+        <h1 className="text-4xl font-bold text-destructive">Access Denied</h1>
         <p>You are not authorized to access this page</p>
       </div>
     );

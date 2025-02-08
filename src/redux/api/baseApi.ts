@@ -9,7 +9,8 @@ import { logout, setUser } from "../features/auth/authSlice";
 import { RootState } from "../store";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3000/api/v1",
+  // baseUrl: "http://localhost:3000/api/v1",
+  baseUrl: "https://octopus-app-eyboh.ondigitalocean.app/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -33,9 +34,10 @@ const baseQueryWithRefreshToken: BaseQueryFn<
       credentials: "include",
     });
     const data = await res.json();
-    if (data.data.accessToken) {
-      const user = verifyToken(data.data.accessToken);
-      api.dispatch(setUser({ token: data.data.accessToken, user }));
+    console.log({ data });
+    if (data?.data?.accessToken) {
+      const user = verifyToken(data?.data?.accessToken);
+      api.dispatch(setUser({ token: data?.data?.accessToken, user }));
       return baseQuery(args, api, extraOptions);
     } else {
       api.dispatch(logout());
@@ -47,7 +49,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: ["semester", "courses"],
+  tagTypes: ["products", "adminOrders", "users"],
   endpoints: () => ({}),
 });
 

@@ -90,6 +90,9 @@
   .h-content {
     @apply h-[calc(100vh-5rem)];
   }
+  .min-h-content {
+    @apply min-h-[calc(100vh-5rem)];
+  }
 }
 
 @layer base {

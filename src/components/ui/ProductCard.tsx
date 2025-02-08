@@ -6,7 +6,7 @@ type ProductProps = {
   product: IProduct;
 };
 const ProductCard = ({ product }: ProductProps) => {
-  const { _id, brand, model, price, salePrice, discount, image } =
+  const { _id, brand, model, price, salePrice, discount, image, category } =
     product || {};
   return (
     <div className="shadow-lg p-6 rounded-lg flex flex-col gap-4 bg-white relative">
@@ -19,7 +19,9 @@ const ProductCard = ({ product }: ProductProps) => {
           </div>
         )
       }
-
+      <div className=" bg-white border  rounded-md absolute top-2 left-2 flex items-center justify-center px-2 py-1 z-10">
+        <span className="text-xs">{category}</span>
+      </div>
       <div className="flex justify-center items-center bg-white h-48 w-full rounded-lg overflow-hidden">
         <img src={image} alt={`${brand} ${model}`} />
       </div>
@@ -45,8 +47,8 @@ const ProductCard = ({ product }: ProductProps) => {
         <Button className="grow" asChild variant="outline">
           <Link to={`/products/${_id}`}>view details</Link>
         </Button>
-        <Button className="grow" variant="default">
-          Buy now
+        <Button className="grow" variant="default" asChild>
+          <Link to={`/checkout/${_id}`}> Buy now</Link>
         </Button>
       </div>
     </div>

@@ -1,10 +1,17 @@
+import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import PublicRoute from "@/components/layout/PublicRoute";
 import AdminLayout from "@/pages/admin/Layout/AdminLayout";
+import Checkout from "@/pages/customer/order/Checkout";
+import CustomerOrders from "@/pages/customer/order/CustomerOrders";
+import VerifyPayment from "@/pages/customer/order/VerifyPayment";
 import About from "@/pages/public/About";
+import ChangePassword from "@/pages/public/ChangePassword";
 import Home from "@/pages/public/Home";
 import Login from "@/pages/public/Login";
 import ProductDetails from "@/pages/public/ProductDetails";
 import Products from "@/pages/public/Products";
 import Register from "@/pages/public/Register";
+import UserProfile from "@/pages/public/UserProfile";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { adminRoutes } from "./admin.routes";
@@ -30,22 +37,69 @@ const router = createBrowserRouter([
         path: "products/:productId",
         element: <ProductDetails />,
       },
+      // TODO: use cart system to checkout later
+      {
+        path: "checkout/:productId",
+        element: (
+          <ProtectedRoute role="customer">
+            <Checkout />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "verify-payment",
+        element: (
+          <ProtectedRoute role="customer">
+            <VerifyPayment />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "orders",
+        element: (
+          <ProtectedRoute role="customer">
+            <CustomerOrders />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: <UserProfile />,
+      },
+      {
+        path: "change-password",
+        element: <ChangePassword />,
+      },
 
       {
         path: "/login",
-        element: <Login />,
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ),
       },
       {
         path: "/register",
-        element: <Register />,
+        element: (
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        ),
       },
     ],
   },
   {
     path: "/admin",
-    element: <AdminLayout />,
+    element: (
+      <ProtectedRoute role="admin">
+        <AdminLayout />
+      </ProtectedRoute>
+    ),
     children: adminRoutes,
   },
 ]);
 
 export default router;
+
+// ?order_id=SP67a1a9d684d49

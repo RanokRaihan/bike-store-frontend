@@ -1,5 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { useGetProductbyIdQuery } from "@/redux/features/product/product.api";
+import ProductCard from "@/components/ui/ProductCard";
+import {
+  useGetProductbyIdQuery,
+  useGetRelatedProductsQuery,
+} from "@/redux/features/product/product.api";
 import { IProduct } from "@/types/product.types";
 import { TruckIcon, Undo2 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
@@ -10,6 +14,10 @@ type ProductDetails = {
 const ProductDetails = () => {
   const { productId } = useParams();
   const { data } = useGetProductbyIdQuery(productId as string);
+  const { data: relatedProductsData } = useGetRelatedProductsQuery(
+    productId as string
+  );
+
   const product: IProduct = data?.data;
   const {
     _id,
@@ -22,6 +30,9 @@ const ProductDetails = () => {
     image,
     inStock,
   } = product || {};
+  const relatedProduct: IProduct[] = relatedProductsData?.data;
+  console.log({ relatedProduct });
+
   return (
     <main className="min-h-screen bg-gray-50">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
@@ -75,16 +86,14 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      {/* <div className="container mx-auto  p-4">
-        {" "}
+      <div className="container mx-auto  p-4">
         <h2 className="text-2xl font-semibold mb-4">Related Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {relatedProduct?.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
         </div>
-      </div> */}
+      </div>
     </main>
   );
 };
