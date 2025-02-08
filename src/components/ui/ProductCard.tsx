@@ -61,8 +61,8 @@ const ProductCard = ({ product }: ProductProps) => {
             <Link to={`/checkout/${_id}`}> Buy now</Link>
           </Button>
         ) : (
-          <Button className="grow" variant="secondary" asChild disabled>
-            <Link to={`/checkout/${_id}`}>stock out</Link>
+          <Button className="grow" variant="secondary" disabled={true}>
+            stock out
           </Button>
         )}
       </div>
