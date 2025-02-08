@@ -43,7 +43,7 @@ export function ChangePasswordForm() {
       }
     } catch (err) {
       const error = err as TError;
-      toast.error(error.message || "change password failed! ");
+      toast.error(error?.data?.message || "change password failed! ");
       if (error?.data?.errorSources) {
         error.data.errorSources.forEach((source) => {
           if (

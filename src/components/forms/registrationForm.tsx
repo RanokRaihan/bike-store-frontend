@@ -55,7 +55,7 @@ export function RegistrationForm() {
       }
     } catch (err) {
       const error = err as TError;
-      toast.error(error.message || "Registration failed! ");
+      toast.error(error?.data?.message || "Registration failed! ");
       if (error?.data?.errorSources) {
         error.data.errorSources.forEach((source) => {
           if (

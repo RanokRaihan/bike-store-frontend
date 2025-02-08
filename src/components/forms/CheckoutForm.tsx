@@ -48,7 +48,7 @@ export function CheckoutForm({ productId }: { productId: string }) {
       }
     } catch (err) {
       const error = err as TError;
-      toast.error(error.message || "Order failed!");
+      toast.error(error?.data?.message || "Order failed!");
       if (error?.data?.errorSources) {
         error.data.errorSources.forEach((source) => {
           if (

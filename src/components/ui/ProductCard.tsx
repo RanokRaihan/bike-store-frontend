@@ -6,8 +6,17 @@ type ProductProps = {
   product: IProduct;
 };
 const ProductCard = ({ product }: ProductProps) => {
-  const { _id, brand, model, price, salePrice, discount, image, category } =
-    product || {};
+  const {
+    _id,
+    brand,
+    model,
+    price,
+    salePrice,
+    discount,
+    image,
+    category,
+    inStock,
+  } = product || {};
   return (
     <div className="shadow-lg p-6 rounded-lg flex flex-col gap-4 bg-white relative">
       {
@@ -47,9 +56,15 @@ const ProductCard = ({ product }: ProductProps) => {
         <Button className="grow" asChild variant="outline">
           <Link to={`/products/${_id}`}>view details</Link>
         </Button>
-        <Button className="grow" variant="default" asChild>
-          <Link to={`/checkout/${_id}`}> Buy now</Link>
-        </Button>
+        {inStock ? (
+          <Button className="grow" variant="default" asChild>
+            <Link to={`/checkout/${_id}`}> Buy now</Link>
+          </Button>
+        ) : (
+          <Button className="grow" variant="secondary" asChild disabled>
+            <Link to={`/checkout/${_id}`}>stock out</Link>
+          </Button>
+        )}
       </div>
     </div>
   );

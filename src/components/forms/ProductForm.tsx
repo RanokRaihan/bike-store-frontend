@@ -124,7 +124,7 @@ const ProductForm = ({ initialValues, id }: ProductFormProps) => {
       }
     } catch (err) {
       const error = err as TError;
-      toast.error(error.message || "Product update failed! ");
+      toast.error(error?.data?.message || "Product update failed! ");
     }
   };
   return (

@@ -26,7 +26,7 @@ const DeleteProductButton = ({ id }: { id: string }) => {
       setIsOpen(false);
     } catch (err) {
       const error = err as TError;
-      toast.error(error.message || "product deletion failed");
+      toast.error(error?.data?.message || "product deletion failed");
     }
   };
   return (
