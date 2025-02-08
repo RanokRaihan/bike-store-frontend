@@ -73,7 +73,14 @@ export function UsersTable() {
             <TableRow key={id}>
               <TableCell className="font-medium">{name}</TableCell>
               <TableCell>{email}</TableCell>
-              <TableCell className="text-right">{status}</TableCell>
+              <TableCell
+                className={cn("font-semibold", {
+                  "text-destructive": status === "Inactive",
+                  "text-primary": status === "Active",
+                })}
+              >
+                {status}
+              </TableCell>
               <TableCell className="text-right">
                 <Button
                   onClick={() => handleStatusChange(id)}

@@ -122,7 +122,7 @@ export function CheckoutForm({ productId }: { productId: string }) {
             control={form.control}
             fieldType={FormFieldType.INPUT}
             type="text"
-            placeholder="+880123456789"
+            placeholder="0123456789"
             label="Phone"
           />
           <CustomFormField

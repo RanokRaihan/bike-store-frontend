@@ -64,7 +64,11 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <UserProfile />,
+        element: (
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "change-password",
