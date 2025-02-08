@@ -39,6 +39,7 @@ export function UsersTable() {
       email: user?.email,
       name: user?.name,
       status: user?.isActive ? "Active" : "Inactive",
+      role: user?.role,
     };
   });
 
@@ -63,16 +64,19 @@ export function UsersTable() {
           <TableRow>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
+            <TableHead>Role</TableHead>
+
             <TableHead>Status</TableHead>
 
             <TableHead className="text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {tableData?.map(({ id, name, status, email }) => (
+          {tableData?.map(({ id, name, status, email, role }) => (
             <TableRow key={id}>
               <TableCell className="font-medium">{name}</TableCell>
               <TableCell>{email}</TableCell>
+              <TableCell>{role}</TableCell>
               <TableCell
                 className={cn("font-semibold", {
                   "text-destructive": status === "Inactive",
