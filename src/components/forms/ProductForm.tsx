@@ -108,7 +108,6 @@ const ProductForm = ({ initialValues, id }: ProductFormProps) => {
   };
 
   const onUpdate = async (values: z.infer<typeof AddProductSchema>) => {
-    console.log("Updating product", values);
     const updateValues = {
       ...values,
       price: parseInt(values.price),

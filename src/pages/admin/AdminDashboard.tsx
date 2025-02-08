@@ -4,7 +4,6 @@ import { useFetchDashboardDataQuery } from "@/redux/features/admin/dashboard.api
 const AdminDashboard = () => {
   const { data, isLoading } = useFetchDashboardDataQuery(undefined);
   const { userInsight, productInsight, orderInsight } = data?.data || {};
-  console.log(data);
 
   if (isLoading) {
     return (

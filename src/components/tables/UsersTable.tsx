@@ -32,7 +32,6 @@ export function UsersTable() {
     useChangeUserStatusMutation();
   const users: TUser[] = data?.data?.result;
   const meta: TMeta = data?.data?.meta;
-  console.log({ meta });
 
   const tableData = users?.map((user) => {
     return {

@@ -11,7 +11,7 @@ const VerifyPayment = () => {
   const order_id = searchParams.get("order_id");
   const { data, isLoading, isError } = useVerifyPaymentQuery(order_id);
   const finalOrder: Order = data?.data;
-  console.log({ finalOrder });
+
   return (
     <main className="p-4 min-h-[calc(100vh-4rem)]">
       {isLoading && (

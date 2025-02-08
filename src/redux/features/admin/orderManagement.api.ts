@@ -5,7 +5,6 @@ const orderManagementApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllOrder: builder.query({
       query: (args: TFilter[]) => {
-        console.log(args);
         const params = new URLSearchParams();
         args.forEach((arg) => {
           params.append(arg.key, arg.value);

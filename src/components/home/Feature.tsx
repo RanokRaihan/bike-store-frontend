@@ -8,7 +8,7 @@ import ProductCard from "../ui/ProductCard";
 const Feature = () => {
   const { data, error, isLoading } = useGetFeaturedProductsQuery(undefined);
   const featuredProducts: IProduct[] = data?.data;
-  console.log(featuredProducts);
+
   return (
     <div className="w-full bg-gray-50">
       <div className="container w-full mx-auto my-4 p-4 ">

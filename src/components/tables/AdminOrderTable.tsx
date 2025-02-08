@@ -40,7 +40,6 @@ export function AdminOrderTable() {
     useChangeOrderStatusMutation();
   const orders: Order[] = data?.data?.result;
   const meta: TMeta = data?.data?.meta;
-  console.log({ meta });
 
   const tableData = orders?.map((order) => {
     return {

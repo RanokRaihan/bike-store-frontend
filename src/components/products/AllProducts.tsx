@@ -10,7 +10,7 @@ const AllProducts = ({ filters }: { filters: TFilter[] }) => {
   const { data } = useGetAllProductsQuery([...filters, ...paginate]);
   const products: IProduct[] = data?.data;
   const meta: TMeta = data?.meta;
-  console.log({ meta });
+
   return (
     <>
       <div className="grid items-start justify-start grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 min-h-[calc(100vh-4rem)]">

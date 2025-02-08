@@ -17,7 +17,6 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { useAppSelector } from "@/redux/hooks";
 
 // This is sample data.
 const data = {
@@ -85,8 +84,6 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { user } = useAppSelector((state) => state.auth);
-  console.log(user);
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>

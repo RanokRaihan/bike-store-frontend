@@ -28,13 +28,11 @@ export function ChangePasswordForm() {
     },
   });
   const onSubmit = async (values: z.infer<typeof changePasswordSchema>) => {
-    console.log(values);
-
     // eslint-disable-next-line no-unused-vars
     const { confirmNewPassword, ...data } = values; // eslint-disable-line @typescript-eslint/no-unused-vars
     try {
       const res = await changePassword(data).unwrap();
-      console.log({ res });
+
       if (res.success) {
         toast.success("Password changed successfully!");
 

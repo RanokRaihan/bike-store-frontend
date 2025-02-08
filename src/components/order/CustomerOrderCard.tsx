@@ -17,7 +17,7 @@ interface OrderCardProps {
 const CustomerOrderCard = ({ order }: OrderCardProps) => {
   const { createdAt, products, status, totalPrice, shippingAddress } =
     order || {};
-  console.log({ order });
+
   return (
     <div className="bg-white shadow-md rounded-md overflow-hidden border">
       <div className="flex flex-col md:flex-row gap-4 justify-between items-start bg-gray-100 p-4 ">

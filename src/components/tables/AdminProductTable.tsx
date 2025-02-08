@@ -22,7 +22,6 @@ export function AdminProductTable() {
   const { data, isLoading, isFetching } = useGetAllProductsQuery(paginate);
   const products: IProduct[] = data?.data;
   const meta: TMeta = data?.meta;
-  console.log({ meta });
 
   const tableData = products?.map((product) => {
     return {

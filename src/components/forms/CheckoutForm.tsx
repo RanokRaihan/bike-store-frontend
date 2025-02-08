@@ -27,7 +27,6 @@ export function CheckoutForm({ productId }: { productId: string }) {
     },
   });
   const onSubmit = async (values: z.infer<typeof checkoutSchema>) => {
-    console.log(values);
     const payload = {
       products: [
         {
@@ -40,7 +39,7 @@ export function CheckoutForm({ productId }: { productId: string }) {
 
     try {
       const res = await placeOrder(payload).unwrap();
-      console.log({ res });
+
       if (res?.success && res?.data?.checkout_url) {
         toast.success("Order placed! Redirecting to payment gateway...");
         window.location.href = res.data.checkout_url;

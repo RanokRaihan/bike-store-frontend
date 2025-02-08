@@ -34,7 +34,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
       credentials: "include",
     });
     const data = await res.json();
-    console.log({ data });
+
     if (data?.data?.accessToken) {
       const user = verifyToken(data?.data?.accessToken);
       api.dispatch(setUser({ token: data?.data?.accessToken, user }));

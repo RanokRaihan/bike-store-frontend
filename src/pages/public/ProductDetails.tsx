@@ -31,7 +31,6 @@ const ProductDetails = () => {
     inStock,
   } = product || {};
   const relatedProduct: IProduct[] = relatedProductsData?.data;
-  console.log({ relatedProduct });
 
   return (
     <main className="min-h-screen bg-gray-50">

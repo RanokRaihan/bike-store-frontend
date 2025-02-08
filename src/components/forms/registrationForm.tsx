@@ -31,20 +31,18 @@ export function RegistrationForm() {
     },
   });
   const onSubmit = async (values: z.infer<typeof userRegistrationSchema>) => {
-    console.log(values);
-
     // eslint-disable-next-line no-unused-vars
     const { confirmPassword, ...data } = values; // eslint-disable-line @typescript-eslint/no-unused-vars
     try {
       const res = await register(data).unwrap();
-      console.log({ res });
+
       if (res.success) {
         toast.success("Registration success!");
         const loginRes = await login({
           email: values.email,
           password: values.password,
         }).unwrap();
-        console.log({ loginRes });
+
         if (!loginRes?.data?.accessToken) {
           throw new Error("No token found");
         }

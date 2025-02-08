@@ -30,10 +30,9 @@ export function LoginForm() {
     },
   });
   const onSubmit = async (values: z.infer<typeof loginSchema>) => {
-    console.log(values);
     try {
       const res = await login(values).unwrap();
-      console.log({ res });
+
       if (!res?.data?.accessToken) {
         throw new Error("No token found");
       }

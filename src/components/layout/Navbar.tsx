@@ -37,7 +37,6 @@ const Navbar = () => {
       toast.error("Logout failed!");
     }
   };
-  console.log(user);
   return (
     <header className="nav-height py-0 px-2 flex flex-col items-center justify-center border-b border-[#e5e5e5]">
       <div className="container mx-auto">
