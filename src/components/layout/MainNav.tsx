@@ -9,14 +9,30 @@ const MainNav = () => {
             Home
           </Link>
         </li>
+
+        <li>
+          <Link to="/products" className="hover:underline underline-offset-4">
+            Products
+          </Link>
+        </li>
+        <li>
+          <Link to="/services" className="hover:underline underline-offset-4">
+            Services
+          </Link>
+        </li>
+        <li>
+          <Link to="/videos" className="hover:underline underline-offset-4">
+            Videos
+          </Link>
+        </li>
         <li>
           <Link to="/about" className="hover:underline underline-offset-4">
             about
           </Link>
         </li>
         <li>
-          <Link to="/products" className="hover:underline underline-offset-4">
-            Products
+          <Link to="/contact" className="hover:underline underline-offset-4">
+            Contact
           </Link>
         </li>
       </ul>

@@ -10,7 +10,7 @@ const Commitment = () => {
         </h3>
         <div>
           <Link
-            to="/register"
+            to="/test-drive"
             className="text-primary hover:text-green-400  underline underline-offset-4 italic"
           >
             More info here
@@ -24,7 +24,7 @@ const Commitment = () => {
         </h3>
         <div>
           <Link
-            to="/register"
+            to="/services"
             className="text-primary hover:text-green-400  underline underline-offset-4 italic"
           >
             More info here
@@ -38,7 +38,7 @@ const Commitment = () => {
         </h3>
         <div>
           <Link
-            to="/register"
+            to="/services"
             className="text-primary hover:text-green-400  underline underline-offset-4 italic"
           >
             More info here

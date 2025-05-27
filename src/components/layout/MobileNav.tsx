@@ -29,11 +29,21 @@ const MobileNav = () => {
           <li className="hover:bg-gray-100 rounded-lg ">
             <Link to="/">Home</Link>
           </li>
+
+          <li>
+            <Link to="/products">Products</Link>
+          </li>
+          <li>
+            <Link to="/services">Services</Link>
+          </li>
+          <li>
+            <Link to="/videos">videos</Link>
+          </li>
           <li>
             <Link to="/about">about</Link>
           </li>
           <li>
-            <Link to="/products">Products</Link>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </SheetContent>

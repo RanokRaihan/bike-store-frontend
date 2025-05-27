@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 
 const Banner = () => {
   return (
-    <div className="h-content w-full flex justify-center items-start bg-green-100 bg-[url(/src/assets/images/banner-bike-v2.jpg)] bg-cover bg-bottom">
+    <div className="h-[70vh] w-full flex justify-center items-start bg-green-800 bg-[url(/src/assets/images/banner-bike-v2.jpg)] bg-cover bg-center">
       <div className="text-center p-8 mt-4 lg:mt-10 space-y-6">
         <h1
           className="text-6xl lg:text-8xl font-bold text-slate-800 "
@@ -18,7 +18,7 @@ const Banner = () => {
         </h2>
 
         <Button size="lg" className="mt-4 text-white p-6" asChild>
-          <Link to="/book-test-frive">Schedule a test drive</Link>
+          <Link to="/test-drive">Schedule a test drive</Link>
         </Button>
       </div>
     </div>

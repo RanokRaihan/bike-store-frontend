@@ -6,12 +6,16 @@ import CustomerOrders from "@/pages/customer/order/CustomerOrders";
 import VerifyPayment from "@/pages/customer/order/VerifyPayment";
 import About from "@/pages/public/About";
 import ChangePassword from "@/pages/public/ChangePassword";
+import Contact from "@/pages/public/Contact";
 import Home from "@/pages/public/Home";
 import Login from "@/pages/public/Login";
 import ProductDetails from "@/pages/public/ProductDetails";
 import Products from "@/pages/public/Products";
 import Register from "@/pages/public/Register";
+import Services from "@/pages/public/Services";
+import TestDrive from "@/pages/public/TestDrive";
 import UserProfile from "@/pages/public/UserProfile";
+import Videos from "@/pages/public/Videos";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { adminRoutes } from "./admin.routes";
@@ -29,6 +33,19 @@ const router = createBrowserRouter([
         path: "about",
         element: <About />,
       },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "services",
+        element: <Services />,
+      },
+      {
+        path: "videos",
+        element: <Videos />,
+      },
+      { path: "test-drive", element: <TestDrive /> },
       {
         path: "products",
         element: <Products />,

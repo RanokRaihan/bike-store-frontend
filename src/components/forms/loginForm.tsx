@@ -6,11 +6,21 @@ import loginSchema from "@/schemas/login.validation";
 import { TError } from "@/types/error.types";
 import { FormFieldType } from "@/types/global.types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ChevronDown, Shield, User } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { z } from "zod";
+import { Button } from "../ui/button";
 import CustomFormField from "../ui/CustomFormField";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import { Form } from "../ui/form";
 import SubmitButton from "../ui/SubmitButton";
 
@@ -22,13 +32,32 @@ export function LoginForm() {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      // email: "mozid@gmail.com",
-      // password: "customer321",
+      email: "",
+      password: "",
+    },
+  });
 
+  // Demo credentials
+  const demoCredentials = {
+    admin: {
       email: "ranok@gmail.com",
       password: "admin321",
     },
-  });
+    member: {
+      email: "ranokraihan@gmail.com",
+      password: "123456",
+    },
+  };
+
+  const populateForm = (role: "admin" | "member") => {
+    const credentials = demoCredentials[role];
+    form.setValue("email", credentials.email);
+    form.setValue("password", credentials.password);
+    toast.info(
+      `${role.charAt(0).toUpperCase() + role.slice(1)} credentials populated`
+    );
+  };
+
   const onSubmit = async (values: z.infer<typeof loginSchema>) => {
     try {
       const res = await login(values).unwrap();
@@ -59,6 +88,50 @@ export function LoginForm() {
             Enter your email below to login to your account
           </p>
         </div>
+
+        {/* Demo Credentials Dropdown */}
+        <div className="flex justify-center">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="gap-2">
+                <User className="h-4 w-4" />
+                Demo Credentials
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="center" className="w-56">
+              <DropdownMenuLabel className="text-center">
+                Quick Login Options
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={() => populateForm("admin")}
+                className="flex items-center gap-2 cursor-pointer"
+              >
+                <Shield className="h-4 w-4 text-orange-500" />
+                <div className="flex flex-col">
+                  <span className="font-medium">Admin Account</span>
+                  <span className="text-xs text-muted-foreground">
+                    Full access to admin panel
+                  </span>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => populateForm("member")}
+                className="flex items-center gap-2 cursor-pointer"
+              >
+                <User className="h-4 w-4 text-blue-500" />
+                <div className="flex flex-col">
+                  <span className="font-medium">Member Account</span>
+                  <span className="text-xs text-muted-foreground">
+                    Customer with shopping access
+                  </span>
+                </div>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
         <div className="grid gap-6">
           <CustomFormField
             name="email"
@@ -74,7 +147,7 @@ export function LoginForm() {
             control={form.control}
             fieldType={FormFieldType.INPUT}
             type="password"
-            placeholder="jhon@example.com"
+            placeholder="Enter your password"
           />
           <SubmitButton className="w-full" isLoading={isLoading}>
             Login
