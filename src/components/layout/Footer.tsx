@@ -54,7 +54,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="bg-gray-800/95 text-white p-2 text-center">
-        © 2021, All rights reserved
+        © {new Date().getFullYear()}, All rights reserved
       </p>
     </footer>
   );

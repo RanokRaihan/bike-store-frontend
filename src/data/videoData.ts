@@ -1,4 +1,4 @@
-// Sample video data - replace with your actual YouTube videos
+// replace with your actual YouTube videos
 export interface VideoData {
   id: string;
   title: string;
@@ -17,7 +17,7 @@ export const videoData: VideoData[] = [
     title: "Himalayan Cinematic video| B-Roll",
     description:
       "Join us on an epic mountain biking adventure through scenic trails and challenging terrain.",
-    youtubeId: "ZVLui4Gqi-4", // Replace with actual YouTube video IDs
+    youtubeId: "ZVLui4Gqi-4",
     category: "adventure",
     duration: "1:07",
     views: "193k",
