@@ -10,7 +10,7 @@ import { RootState } from "../store";
 
 const baseQuery = fetchBaseQuery({
   // baseUrl: "http://localhost:3000/api/v1",
-  baseUrl: "http://198.199.82.233:5000/api/v1",
+  baseUrl: "https://bikestore.ranokapi.com/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
